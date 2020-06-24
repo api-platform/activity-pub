@@ -1,0 +1,65 @@
+vocabularies:
+    - uri: https://raw.githubusercontent.com/w3c/activitystreams/master/vocabulary/activitystreams2.owl
+      format: turtle
+
+id:
+    onClass: parent
+
+doctrine:
+    inheritanceAnnotations:
+        - '@ORM\Entity'
+        - '@ORM\InheritanceType("JOINED")'
+
+namespaces:
+    prefix: 'App'
+    entity: 'App\Entity'
+    enum: 'App\Enum'
+    interface: 'App\Model'
+
+rangeMapping:
+    'http://www.w3.org/ns/activitystreams#Object': http://www.w3.org/2001/XMLSchema#anyURI
+
+allTypes: true
+types:
+
+    # Relations use IRIs, because they can belong to a distant system
+    Object_: &commonProps
+        allProperties: true
+        properties:
+            # Custom field to handle external objects and activities (federation)
+            externalId:
+                range: http://www.w3.org/2001/XMLSchema#anyURI
+                cardinality: '(0..1)'
+            to:
+                cardinality: '(1..*)'
+            bcc:
+                cardinality: '(0..*)'
+            bto:
+                cardinality: '(0..*)'
+            cc:
+                cardinality: '(0..*)'
+            attributedTo:
+                cardinality: '(1..1)'
+            inReplyTo:
+                cardinality: '(0..1)'
+            replies:
+                exclude: true
+            relationship:
+                exclude: true
+    Activity: *commonProps
+
+    # Collections are handled dynamically
+    Collection_:
+        exclude: true
+    CollectionPage:
+        exclude: true
+    OrderedCollection:
+        exclude: true
+    OrderedCollectionPage:
+        exclude: true
+    OrderedItems:
+        exclude: true
+
+    InstransitiveActivity:
+        exclude: true
+debug: true

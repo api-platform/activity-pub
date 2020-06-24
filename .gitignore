@@ -1,0 +1,6 @@
+/tests/app/var
+/tests/app/public/*
+!/tests/app/public
+/vendor
+/.php_cs.cache
+/composer.lock

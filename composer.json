@@ -1,0 +1,40 @@
+{
+    "name": "api-platform/activity-pub",
+    "description": "Support for the ActivityPub decentralized social networking protocol",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kévin Dunglas",
+            "email": "kevin@dunglas.fr"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "api-platform/core": "^2.6@dev",
+        "doctrine/orm": "^2.7",
+        "doctrine/annotations": "^1.10",
+        "symfony/http-client": "^5.1",
+        "symfony/messenger": "^5.1"
+    },
+    "require-dev": {
+        "doctrine/doctrine-bundle": "^2.1",
+        "symfony/framework-bundle": "^5.1",
+        "twig/twig": "^3.0",
+        "symfony/twig-bundle": "^5.1",
+        "symfony/asset": "^5.1",
+        "symfony/security-bundle": "^5.1",
+        "symfony/web-profiler-bundle": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "ApiPlatform\\ActivityPub\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\": "tests/app/"
+        }
+    }
+}
